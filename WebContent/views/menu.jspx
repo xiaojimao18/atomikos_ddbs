@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	style="height: 500px;">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<SCRIPT type="text/javascript">
+		$(function() {
+			$(".menu_linkbutton").linkbutton({
+				plain : true
+			});
+		});
+		$("#btn_goods_management").click(function () {			
+			$("#frame_center").load("goods/management");
+		});
+		$("#btn_employee_management").click(function () {			
+			$("#frame_center").load("employees/management");
+		});
+		$("#btn_sales_report").click(function () {			
+			$("#frame_center").load("reports/salesReport");
+		});
+	</SCRIPT>
+	<div id="menuPanel">
+			<ul>
+				<a href="#" id="btn_sales" class="menu_linkbutton"
+					iconCls="icon-ok">销售管理</a>
+				</ul>
+			<ul>
+				<a href="#" id="btn_goods_management"
+					class="menu_linkbutton" iconCls="icon-ok">商品管理</a>
+			</ul>
+			<ul>
+				<a href="#" id="btn_employee_management" class="menu_linkbutton"
+					iconCls="icon-ok">雇员管理</a>
+			</ul>
+			<ul>
+				<a href="#" id="btn_in_management" class="menu_linkbutton"
+					iconCls="icon-ok">进货管理</a>
+			</ul>
+			<ul>
+				<a href="#" id="btn_sales_report" class="menu_linkbutton"
+					iconCls="icon-ok">销售报表</a>
+			</ul>
+			
+	</div>
+</div>

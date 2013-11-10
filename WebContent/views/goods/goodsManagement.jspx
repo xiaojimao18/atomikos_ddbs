@@ -1,0 +1,100 @@
+<div xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0" style="width:100%;height:100%;" fit="true">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+    <jsp:output omit-xml-declaration="yes" />
+	<script type="text/javascript">
+		$(function(){
+			$('#tt').datagrid({
+				url: 'goods/getGoodsList/all',
+				title: '商品库存表',
+				fitColumns: true,
+				nowrap:false,
+				singleSelect:true,
+				rownumbers:true,
+				showFooter:true,
+				columns:[[
+					{field:'id',title:'编号',width:80},
+					{field:'name',title:'名称',width:120},
+					{field:'price',title:'价格',width:80,align:'right'},
+					{field:'producer',title:'生产商',width:80,align:'right'},
+				]],
+				toolbar:[{
+					id:'btnadd',
+					text:'Add',
+					iconCls:'icon-remove',
+					handler:function(){
+						$('#btnsave').linkbutton('enable');
+						alert('add');
+					}
+				},{
+					id:'btncut',
+					text:'Cut',
+					iconCls:'icon-cut',
+					handler:function(){
+						$('#btnsave').linkbutton('enable');
+						alert('cut');
+					}
+				},{
+					id:'btnupdate',
+					text:'update',
+					iconCls:'icon-remove',
+					handler:function(){
+						var row = $('#tt').datagrid('getSelected');
+						$('#goodsId').val(row.id);
+						$('#goodsPrice').val(row.price);
+						openDialog();
+					}
+				},'-',{
+					id:'btnsave',
+					text:'Save',
+					disabled:true,
+					iconCls:'icon-save',
+					handler:function(){
+						$('#btnsave').linkbutton('disable');
+						alert('save');
+					}
+				}]
+			});
+			$("#editPrice").form('clear');
+			$('#editDialog').dialog({
+				title: "修改价格",
+				modal: true
+			});
+		});
+		function openDialog(){
+			$('#editDialog').dialog('open');
+		};
+		function submitPrice(){
+			var goodsId = $("#goodsId").val();
+			var price = $("#goodsPrice").val();
+			$.ajax({
+  				url: 'goods/editPrice',
+  				method:'post',
+  				data: {"goodsId":goodsId, "price": price},  				
+  				success: function(data) {  					
+  					var objMsg =eval('('+data+')'); 					
+    				if(objMsg == false)
+    					alert("更新失败!");
+  					$('#editDialog').dialog('close');
+  					$('#tt').datagrid('reload');
+  				}  				  					
+			});
+			
+		}
+		
+	</script>
+	<div id="editDialog" style="width:400px; height:200px;" class="easyui-dialog" closed="true">
+		<form id="editPrice" action="goods/editPrice" method="post">
+			<input name="goodsId" value="" type="hidden" id="goodsId"/>
+			<div>
+				<label>输入新的价格:</label> <input name="price"
+					class="easyui-validatebox" required="true" id="goodsPrice"/>
+			</div>
+			<div>
+				<input type="button" value="提交" onClick="javaSript:submitPrice()"/>
+			</div>
+		</form>
+	</div>	
+	<div id="MainContent">
+		<table id="tt"></table>
+	</div>
+</div>

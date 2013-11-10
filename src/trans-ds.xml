@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+
+	xsi:schemaLocation="   
+       http://www.springframework.org/schema/beans    
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+       http://www.springframework.org/schema/context    
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd   
+       http://www.springframework.org/schema/tx   
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd   
+        http://www.springframework.org/schema/aop   
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dataSourceA" class="com.atomikos.jdbc.AtomikosDataSourceBean"
+		init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="${mysqlA.uniqueResourceName}" />
+		<property name="xaDataSourceClassName" value="${mysql.xaDataSourceClassName}" />
+		<property name="xaProperties">
+			<props>
+				<prop key="user">${mysqlA.user}</prop>
+				<prop key="password">${mysqlA.password}</prop>
+				<prop key="URL">${mysqlA.url}</prop>
+			</props>
+		</property>
+		<property name="poolSize" value="${mysql.poolSize}" />
+	</bean>
+
+	<bean id="dataSourceB" class="com.atomikos.jdbc.AtomikosDataSourceBean"
+		init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="${mysqlB.uniqueResourceName}" />
+		<property name="xaDataSourceClassName" value="${mysql.xaDataSourceClassName}" />
+		<property name="xaProperties">
+			<props>
+				<prop key="user">${mysqlB.user}</prop>
+				<prop key="password">${mysqlB.password}</prop>
+				<prop key="URL">${mysqlB.url}</prop>
+			</props>
+		</property>
+		<property name="poolSize" value="${mysql.poolSize}" />
+	</bean>
+	
+	<bean id="dataSourceC" class="com.atomikos.jdbc.AtomikosDataSourceBean"
+		init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="${mysqlC.uniqueResourceName}" />
+		<property name="xaDataSourceClassName" value="${mysql.xaDataSourceClassName}" />
+		<property name="xaProperties">
+			<props>
+				<prop key="user">${mysqlC.user}</prop>
+				<prop key="password">${mysqlC.password}</prop>
+				<prop key="URL">${mysqlC.url}</prop>
+			</props>
+		</property>
+		<property name="poolSize" value="${mysql.poolSize}" />
+	</bean>
+<!--  为了扩展站点的需要，去掉这个显示的jdbcTemplate配置，在程序中使用spring 的 getBea("bean")来获取bean
+	<bean id="jdbcTemplate_A" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSourceA" />
+	</bean>
+
+	<bean id="jdbcTemplate_B" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSourceB" />
+	</bean>
+-->
+	<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
+		init-method="init" destroy-method="close">
+		<property name="forceShutdown" value="${transactionManager.forceShutdown}" />
+	</bean>
+
+	<bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp">
+		<property name="transactionTimeout" value="${transactionManager.transactionTimeout}" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.transaction.jta.JtaTransactionManager">
+		<property name="transactionManager">
+			<ref bean="atomikosTransactionManager" />
+		</property>
+		<property name="userTransaction">
+			<ref bean="atomikosUserTransaction" />
+		</property>
+	</bean>
+
+	<tx:annotation-driven proxy-target-class="true" />
+	<!--Spring 扫描除controller以外的Bean -->
+	<context:component-scan base-package="com.*.*.*.*">
+		<!-- <context:exclude-filter type="regex" expression=".*Controller$" /> -->
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<bean id = "databaseDSConfig" class="com.len.trans.config.DS_Config" scope="singleton"></bean>
+	<bean id = "ddbsDaoUtil" class="com.len.trans.service.impl.DDBSDaoUtil" scope="singleton"></bean>
+	<bean id="contextApplicationContextProvider" class="com.len.trans.config.ApplicationContextProvider"></bean>  
+	<bean id="springUtil" class="com.len.trans.config.SpringUtil" scope="singleton"></bean>
+	<bean id="jsonTransformer" class="com.len.trans.config.JsonTransformer" scope="singleton"></bean>
+</beans>
