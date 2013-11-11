@@ -1,1 +1,4 @@
 src/jdbc.properties
+build
+.classpath
+*~
