@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%
+	boolean flag = false;
+	if(session.getAttribute("userName") == null)
+		flag = false;
+	else
+		flag = true;
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,11 +53,31 @@
             	<span class="icon-bar"></span>
             	<span class="icon-bar"></span>
             </a>
+            <%
+            	if(flag == false){
+            %>
             <div id="navList" class="nav-collapse collapse">
             	<div><a href="#logInModal" data-toggle="modal">LOG IN</a></div>
                 <div>|</div>
                 <div><a href="#signUpModal" data-toggle="modal">SIGN UP</a></div>
             </div>
+            <%
+            	}else{
+            %>
+            <div id="userInfo" class="nav-collapse collapse">
+            	<div>
+                	<a id="dropInfo" href="#" data-toggle="dropdown">
+                    	<i class="icon-user"></i> &nbsp;娇娇大神
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://google.com">查看订单</a></li>
+                        	<li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">退出登录</a></li>
+                      	</ul>
+                </div>
+            </div>
+            <%
+            	}
+            %>
         </div>
 	</div>
 
@@ -204,7 +231,6 @@
 	</div>
 	</form>
 </div>
-
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 
