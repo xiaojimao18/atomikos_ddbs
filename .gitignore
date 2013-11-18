@@ -2,3 +2,4 @@ src/jdbc.properties
 build
 .classpath
 *~
+/bin
