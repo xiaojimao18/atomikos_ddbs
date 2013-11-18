@@ -1,0 +1,125 @@
+    /* TOP NAV */
+
+        #row-logo {
+            padding: 20px 0 0 0;
+        }
+        /*bootstrap overrides*/
+        .navbar.bufferBottom {margin-bottom: 20px;}
+        
+        
+        
+        .topBorder {border-bottom: 1px solid #C8C8C8;}
+
+    /* SEARCH */
+        /* LARGE FIELD */
+        .search-bar {
+            background: #ff821f;
+            margin-top: 25px;
+            height: 45px;
+            padding: 5px;
+        }
+        .search-bar img {
+            margin: 10px 10px 0 10px;
+            vertical-align: top;
+        }
+        .search-bar form {
+            display: inline-block;
+            margin: 0;
+        }
+        .search-bar input {
+            border-radius: 0;
+            border: 0;
+            box-shadow: none;
+            height: 15px;
+            padding: 15px;
+            width: 794px;
+        }
+        
+        /* RESULTS */
+        .searchResults h1 {
+            font-size: 32px;
+            line-height: 34px;
+            margin-top: 20px;
+        }
+        .search-results {
+            margin-top: 15px;
+        }
+        .search-block {
+            /*width: 518px;
+            display: inline-block;
+            vertical-align: top;
+            font-size: 0;*/
+            margin: 0 0 40px 0;
+        }
+        /*.search-block.right {
+            margin-right: 0;
+        }*/
+        .search-block-title {
+            border-top: 1px solid #e3e3e3;
+            padding: 10px 0; 
+            font-style: italic;
+            font-family: serif;
+            font-size: 15px;
+        }
+        .search-result-item {
+            display: inline-block;
+            vertical-align: top;
+            width: 156px;
+            margin-right: 20px;
+        }
+        .search-result-item.right {
+            margin-right: 0;
+        }
+        .textual .search-result-item {
+            width: 245px;
+            margin-bottom: 5px;
+        }
+        .careers .search-result-item {
+            /*display: block;*/
+            width: 100%;
+        }
+        .search-result-item a  {
+            color: #333;
+        }
+        .textual .search-item-title .moar {
+            background: url('img/dark-green-chevron-24px.png') no-repeat right center;
+            width: 12px;
+            background-size: 6px 12px;
+            height: 10px;
+            display: inline-block;
+        }
+        .search-item-title  {
+            margin-top: 8px;
+            font-size: 14px;
+            display: block;
+            color: #333333;
+        }
+        
+
+  
+	
+
+/* ============================================================================================================================== */
+/* DESKTOP */
+/* ============================================================================================================================== */
+
+    /* GLOBAL */
+    /* SHADOWS */
+    /* FONTS */
+    /* WRAPPERS */
+    /* BUFFERS */
+    /* TOP NAV */
+        
+        
+    /* SECONDARY NAV */
+        #rowSecondNav {
+            padding: 7px 0 5px 0;
+        }
+        #rowSecondNav p {
+            font-size: 12px;
+            margin: 0 0 2px 0;
+            float: left;
+        }
+        #rowSecondNav .doubleNav p {
+            width: 160px;
+        }

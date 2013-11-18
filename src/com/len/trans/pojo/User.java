@@ -2,30 +2,18 @@ package com.len.trans.pojo;
 
 public class User {
 
-	private int id;
-	private String uname;
-	private String upwd;
-	
-	public int getId() {
-		return id;
+	private String userId;
+	private String userPwd;
+	public String getUserId() {
+		return userId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-	public String getUname() {
-		return uname;
+	public String getUserPwd() {
+		return userPwd;
 	}
-	public void setUname(String uname) {
-		this.uname = uname;
-	}
-	public String getUpwd() {
-		return upwd;
-	}
-	public void setUpwd(String upwd) {
-		this.upwd = upwd;
-	}
-	
-	public String toString(){
-		return uname;
+	public void setUserPwd(String userPwd) {
+		this.userPwd = userPwd;
 	}
 }

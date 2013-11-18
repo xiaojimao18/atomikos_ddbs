@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.len.trans.dao.GoodsDao;
 import com.len.trans.pojo.Goods;
 import com.len.trans.service.impl.DDBSDaoUtil;
+
 @Repository("goodsDao")
 public class GoodsDaoImpl implements GoodsDao{
 	@Autowired
@@ -29,8 +30,9 @@ public class GoodsDaoImpl implements GoodsDao{
 		
 		for(JdbcTemplate j : jdbcTemplateList){
 			goodsList.addAll(j.query(sql, new GoodsWrapper()));
-			if(!goodsList.isEmpty())
+			if(!goodsList.isEmpty()) {
 				break;
+			}
 		}
 		
 		return goodsList;

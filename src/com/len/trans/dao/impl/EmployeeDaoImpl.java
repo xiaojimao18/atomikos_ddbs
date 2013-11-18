@@ -22,7 +22,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	public List<Employee> getEmployeeList() {
 		String tableName = "employee";
 		List <Employee> employeeList = new ArrayList<Employee>();
-		String sql = "select * from "+tableName;
+		String sql = "select * from " + tableName;
 		final String [] fields = {"Id","Name","Workyear","Salary","Tel","Location","Gender","Birthday","Address"};
 		/**
 		 * 如果这是总部：

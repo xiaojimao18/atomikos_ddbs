@@ -81,8 +81,7 @@
 		<property name="transactionTimeout" value="${transactionManager.transactionTimeout}" />
 	</bean>
 
-	<bean id="transactionManager"
-		class="org.springframework.transaction.jta.JtaTransactionManager">
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
 		<property name="transactionManager">
 			<ref bean="atomikosTransactionManager" />
 		</property>
@@ -98,8 +97,8 @@
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-	<bean id = "databaseDSConfig" class="com.len.trans.config.DS_Config" scope="singleton"></bean>
-	<bean id = "ddbsDaoUtil" class="com.len.trans.service.impl.DDBSDaoUtil" scope="singleton"></bean>
+	<bean id="databaseDSConfig" class="com.len.trans.config.DS_Config" scope="singleton"></bean>
+	<bean id="ddbsDaoUtil" class="com.len.trans.service.impl.DDBSDaoUtil" scope="singleton"></bean>
 	<bean id="contextApplicationContextProvider" class="com.len.trans.config.ApplicationContextProvider"></bean>  
 	<bean id="springUtil" class="com.len.trans.config.SpringUtil" scope="singleton"></bean>
 	<bean id="jsonTransformer" class="com.len.trans.config.JsonTransformer" scope="singleton"></bean>

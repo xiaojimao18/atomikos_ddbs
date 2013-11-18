@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class IndexController {
 	@RequestMapping(method = RequestMethod.GET, value="/default")
 	public String defaultPage(){
-		return "default";
+		return "pphs";
 	}
 	@RequestMapping(method = RequestMethod.GET, value="/menu")
 	public String menu(){

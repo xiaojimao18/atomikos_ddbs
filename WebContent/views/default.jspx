@@ -12,10 +12,9 @@
 <script src="js/jquery-1.6.3.js" type="text/javascript"><!-- --></script>
 <script src="js/jquery.easyui.min.js" type="text/javascript"><!-- --></script>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=8" />
-<title>连锁服装店管理系统
-</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<title>连锁服装店管理系统</title>
 </head>
 <body>
 	<center>

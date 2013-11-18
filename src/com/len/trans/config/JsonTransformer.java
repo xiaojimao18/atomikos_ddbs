@@ -8,7 +8,7 @@ import flexjson.transformer.DateTransformer;
 public class JsonTransformer {
 	
 	public String getJsonForm(DataGrid dataGrid){
-		JSONSerializer serializer = new JSONSerializer().transform(new DateTransformer("MM/dd/yyyy"), Date.class);;
+		JSONSerializer serializer = new JSONSerializer().transform(new DateTransformer("MM/dd/yyyy"), Date.class);
 		return serializer.exclude("*.class").include("*.rows").deepSerialize(dataGrid);
 	}
 }
