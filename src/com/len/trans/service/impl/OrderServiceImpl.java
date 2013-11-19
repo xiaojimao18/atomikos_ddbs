@@ -12,7 +12,7 @@ import com.len.trans.dao.OrderDao;
 import com.len.trans.pojo.Order;
 import com.len.trans.service.OrderService;
 
-@Service("orderSerivce")
+@Service("orderService")
 public class OrderServiceImpl implements OrderService {
 	@Autowired
 	@Qualifier("orderDao")
