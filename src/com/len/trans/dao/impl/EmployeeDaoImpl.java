@@ -23,7 +23,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		String tableName = "employee";
 		List <Employee> employeeList = new ArrayList<Employee>();
 		String sql = "select * from " + tableName;
-		final String [] fields = {"Id","Name","Workyear","Salary","Tel","Location","Gender","Birthday","Address"};
+		//final String [] fields = {"Id","Name","Workyear","Salary","Tel","Location","Gender","Birthday","Address"};
 		/**
 		 * 如果这是总部：
 		 * 总部保存着多有的雇员

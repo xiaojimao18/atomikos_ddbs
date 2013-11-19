@@ -23,12 +23,13 @@ public class RestaurantDaoimpl implements RestaurantDao {
 		List<Restaurant> resList = new ArrayList<Restaurant>();
 		
 		String tableName = "restaurant";
-		String sql = "select * from " + tableName + " where Location = " + location + ";";
-		
-		List<JdbcTemplate> jdbcTemplateList = ddbsDaoUtil.getQueryJdbcTemplateList(tableName, null, null);
-		
+		String[] fields = {"Location"};
+		Object[] params = {location};
+		List<JdbcTemplate> jdbcTemplateList = ddbsDaoUtil.getQueryJdbcTemplateList(tableName, fields, params);
+
+		String sql = "select * from " + tableName + " where Location = " + location;
 		for(JdbcTemplate j : jdbcTemplateList){
-			resList.addAll(j.query(sql, new RestaurantWrapper()));
+			resList.addAll(j.query(sql, params, new RestaurantWrapper()));
 			if(!resList.isEmpty()) {
 				break;
 			}
