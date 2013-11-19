@@ -60,15 +60,16 @@ public class UserController {
 	public String UserLogin(HttpServletRequest request, HttpServletResponse response, @RequestParam String userName, @RequestParam String userPwd){
 		HttpSession session = request.getSession();
 		//判断是否存在用户，且密码正确
-		//如果正确
-		//session.setAttribute("userName", userName);
-		//如果错误
-		session.setAttribute("userName", "_null");
-		response.setContentType("text/html; charset=gb2312");
-
-		ServletContext sc = request.getServletContext();
-
-		return "pphs";
+		System.out.println(userName + "," + userPwd);
+		boolean flag = userService.checkUser(userName, userPwd);
+		System.out.println(flag);
+		if(flag == true){
+			session.setAttribute("userName", userName);
+			return "pphs";
+		}else{
+			session.setAttribute("userName", null);
+			return "error";
+		}
 	
 	}
 	@RequestMapping(value="/UserLogout")

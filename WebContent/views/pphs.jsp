@@ -67,7 +67,7 @@
             <div id="userInfo" class="nav-collapse collapse">
             	<div>
                 	<a id="dropInfo" href="#" data-toggle="dropdown">
-                    	<i class="icon-user"></i> &nbsp;娇娇大神
+                    	<i class="icon-user"></i> &nbsp;<%=session.getAttribute("userName") %>
                     </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                     	<li role="presentation"><a role="menuitem" tabindex="-1" href="user/UserLogout">查看订单</a></li>
