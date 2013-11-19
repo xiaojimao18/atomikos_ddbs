@@ -15,6 +15,7 @@ public class UserWrapper implements RowMapper<User> {
 		
 		user.setUserId(rs.getString("UId"));
 		user.setUserPwd(rs.getString("UPwd"));
+		user.setLocation(rs.getString("Location"));
 		
 		return user;
 	}

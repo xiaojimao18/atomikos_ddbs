@@ -17,8 +17,8 @@ public class FoodSerivceImpl implements FoodService {
 	private FoodDao foodDao;
 	
 	@Override
-	public List<Food> getFoodList(String restaurantId) {
-		List<Food> foodList = foodDao.getFoodList(restaurantId);
+	public List<Food> getFoodList(String restaurantId, String location) {
+		List<Food> foodList = foodDao.getFoodList(restaurantId, location);
 		return foodList;
 	}
 

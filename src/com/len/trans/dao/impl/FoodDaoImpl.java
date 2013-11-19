@@ -18,14 +18,16 @@ public class FoodDaoImpl implements FoodDao {
 	@Qualifier("ddbsDaoUtil")
 	private DDBSDaoUtil ddbsDaoUtil;
 	
-	public List<Food> getFoodList(String RId) {
+	public List<Food> getFoodList(String restaurantId, String location) {
 		List<Food> foodList = new ArrayList<Food>();
 		
 		String tableName = "food";
-		String sql = "select * from " + tableName + " where restaurantId = " + RId;
+		String[] fields = {"Location"};
+		Object[] params = {location};
 		
-		List<JdbcTemplate> jdbcTemplateList = ddbsDaoUtil.getQueryJdbcTemplateList(tableName, null, null);
+		List<JdbcTemplate> jdbcTemplateList = ddbsDaoUtil.getQueryJdbcTemplateList(tableName, fields, params);
 		
+		String sql = "select * from " + tableName + " where restaurantId = " + restaurantId;
 		for(JdbcTemplate j : jdbcTemplateList){
 			foodList.addAll(j.query(sql, new FoodWrapper()));
 			if(!foodList.isEmpty()) {

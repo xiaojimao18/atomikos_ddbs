@@ -42,13 +42,13 @@ public class UserDaoImpl implements UserDao{
 		String tableName  = "user";
 		//暂时只考虑水平分片，水平分片的插入要找到到底要插入的表，然后
 		//可能要执行多条插入操作
-		String [] fields = {"UId","UPwd"};
-		Object[] params={u.getUserId(),u.getUserPwd()}; //注意这个的param 与 field 有对应
+		String [] fields = {"UId", "UPwd", "Location"};
+		Object[] params={u.getUserId(),u.getUserPwd(), u.getLocation()}; //注意这个的param 与 field 有对应
 		
 		String fields_str = ddbsDaoUtil.getFieldsStr(fields);
 		List <JdbcTemplate> jdbcTemplateList = ddbsDaoUtil.getUpdateJdbcTemplateList(tableName, fields, params);
 		
-		String sql = "insert into user("+ fields_str +" ) values(?,?)";//括号里面的内容必须完整，准确
+		String sql = "insert into user("+ fields_str +" ) values(?,?,?)";//括号里面的内容必须完整，准确
 		for(JdbcTemplate j :jdbcTemplateList){
 			j.update(sql, params);
 		}

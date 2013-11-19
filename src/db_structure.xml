@@ -10,12 +10,19 @@
 		</table>
 		<table name="food" sharding="true" field="Location">
 			<dataSources>
-				<dataSource name="dataSourceA"></dataSource>
-				<dataSource name="dataSourceB"></dataSource>
-				<dataSource name="dataSourceC"></dataSource>
+				<dataSource name="dataSourceA" rule="EQUALS" value="北京"></dataSource>
+				<dataSource name="dataSourceB" rule="EQUALS" value="香港"></dataSource>
+				<dataSource name="dataSourceC" rule="EQUALS" value="上海"></dataSource>
 			</dataSources>				
 		</table>
 		<table name="restaurant" sharding="true" field="Location">
+			<dataSources>
+				<dataSource name="dataSourceA" rule="EQUALS" value="北京"></dataSource>
+				<dataSource name="dataSourceB" rule="EQUALS" value="香港"></dataSource>
+				<dataSource name="dataSourceC" rule="EQUALS" value="上海"></dataSource>
+			</dataSources>				
+		</table>
+		<table name="user" sharding="true" field="Location">
 			<dataSources>
 				<dataSource name="dataSourceA" rule="EQUALS" value="北京"></dataSource>
 				<dataSource name="dataSourceB" rule="EQUALS" value="香港"></dataSource>
