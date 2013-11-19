@@ -70,9 +70,9 @@
                     	<i class="icon-user"></i> &nbsp;娇娇大神
                     </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://google.com">查看订单</a></li>
-                        	<li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">退出登录</a></li>
-                      	</ul>
+                    	<li role="presentation"><a role="menuitem" tabindex="-1" href="user/UserLogout">查看订单</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="UserLogout">退出登录</a></li>
+                	</ul>
                 </div>
             </div>
             <%
@@ -177,23 +177,24 @@
     	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     	<h3 id="logInModalLabel">LOG IN</h3>
 	</div>
-	<form class="form-horizontal loginDialog" action="/User/Signin/" method="post" acceptcharset="UTF-8">
+	<form class="form-horizontal loginDialog" action="UserLogin" method="post" acceptcharset="UTF-8">
 		<div class="modal-body">
 			<div class="control-group">
     			<label class="control-label" for="inputEmail">Email</label>
     			<div class="controls">
-					<input type="text" id="inputEmail" placeholder="Email">
+					<input type="text" id="inputEmail" placeholder="Email" name="userName">
 				</div>
 			</div>
   			<div class="control-group">
     			<label class="control-label" for="inputPassword">Password</label>
     			<div class="controls">
-      				<input type="password" id="inputPassword" placeholder="Password">
+      				<input type="password" id="inputPassword" placeholder="Password" name="userPwd">
     			</div>
 			</div>
+			<button class="btn btn-info" data-dismiss="modal" aria-hidden="true" type="submit">Log In</button>
 	</div>
 		<div class="modal-footer">
-    	<button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Log In</button>
+    	<button class="btn btn-info" data-dismiss="modal" aria-hidden="true" type="submit">Log In</button>
     	<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 	</div>
 	</form>
@@ -231,6 +232,17 @@
 	</div>
 	</form>
 </div>
+
+
+	<form class="form-horizontal loginDialog" action="UserLogin" method="post" acceptcharset="UTF-8">
+		<input type="text" id="inputEmail" placeholder="Email" name="userName">
+		<input type="password" id="inputPassword" placeholder="Password" name="userPwd">
+	   	<button class="btn btn-info" data-dismiss="modal" aria-hidden="true" type="submit">Log In</button>
+    	<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+	</form>
+
+
+
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 
