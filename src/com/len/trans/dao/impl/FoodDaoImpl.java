@@ -22,9 +22,7 @@ public class FoodDaoImpl implements FoodDao {
 		List<Food> foodList = new ArrayList<Food>();
 		
 		String tableName = "food";
-		String sql = "select * from " + tableName + " where restaurantId = " + RId + ";";
-		//final String[] fields = {"FId", "RId", "FName", "Price", "FIntro", "FImg"};
-		//Object[] params = {RId};
+		String sql = "select * from " + tableName + " where restaurantId = " + RId;
 		
 		List<JdbcTemplate> jdbcTemplateList = ddbsDaoUtil.getQueryJdbcTemplateList(tableName, null, null);
 		
