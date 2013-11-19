@@ -12,7 +12,7 @@ import com.len.trans.dao.FoodDao;
 import com.len.trans.pojo.Food;
 import com.len.trans.service.impl.DDBSDaoUtil;
 
-@Repository("FoodDao")
+@Repository("foodDao")
 public class FoodDaoImpl implements FoodDao {
 	@Autowired
 	@Qualifier("ddbsDaoUtil")

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.len.trans.dao.OrderDao;
 import com.len.trans.pojo.Order;
@@ -23,11 +25,13 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
 	public void addOrder(Order order) {
 		orderDao.addOrder(order);
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
 	public void cancelOrder(Order order) {
 		orderDao.cancelOrder(order);
 	}
