@@ -126,7 +126,7 @@
 <div class="container wrapper wrapperBrown">
 	<div class="container">
     	<div class="container">
-    	<ul class="thumbnails">
+    	<ul class="thumbnails" id="rstList">
         	<li class="span3">
             	<div class="thumbnail">
                 	<img data-src="holder.js/300x200" src="assets/img/demo.jpg">
@@ -245,6 +245,34 @@
 
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(
+	function(){
+		$.post('getRestaurant',{"location":"北京"}).success(
+			function(data){
+				alert(data);
+				var $rstList = $("#rstList");  
+				var strHtml = ""; 
+				$rstList.empty();//清空内容  
+				$.each(data,function(infoIndex,info){  
+				      strHtml += "姓名："+info["restaurantId"]+"<br>";  
+				      strHtml += "性别："+info["restaurantImg"]+"<br>";  
+				      strHtml += "邮箱："+info["email"]+"<br>";  
+				      strHtml += "<hr>";
+				    });
+				$rstList.html(strHtml);//显示处理后的数据     
+				});
+				
+			}).error(function(data){
+				alert("系统出错");
+		});
+	}
+);
+
+ 
+</script>
 
 </body>
 </html>

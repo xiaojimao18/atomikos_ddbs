@@ -27,7 +27,7 @@ public class RestaurantController {
 	@Qualifier("jsonTransformer")
 	private JsonTransformer jsonTransformer;
 	
-	@RequestMapping(value="getRestaurant")
+	@RequestMapping(value="/getRestaurant")
 	public void getRestaurantList(@RequestParam String location, HttpServletResponse response) {
 		List<Restaurant> restList = restService.getRestaurantList(location);
 		DataGrid dataGrid = new DataGrid();

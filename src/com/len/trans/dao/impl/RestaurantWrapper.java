@@ -13,10 +13,11 @@ public class RestaurantWrapper implements RowMapper<Restaurant> {
 	public Restaurant mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Restaurant res = new Restaurant();
 		
-		res.setRestaurantId(rs.getString("RestaurantId"));
-		res.setRestaurantName(rs.getString("restaurantName"));
-		res.setRestaurantIntro(rs.getString("restaurantIntro"));
-		res.setRestaurantImg(rs.getString("restaurantImg"));
+		res.setRestaurantId(rs.getString("RId"));
+		res.setRestaurantName(rs.getString("RName"));
+		res.setRestaurantIntro(rs.getString("RIntro"));
+		res.setRestaurantImg(rs.getString("RImg"));
+		res.setRestaurantLocation(rs.getString("Location"));
 
 		return res;
 	}
