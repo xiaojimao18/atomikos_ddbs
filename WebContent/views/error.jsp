@@ -5,14 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>User Error.</title>
+<script src="assets/js/jquery.js"></script>
 <script type="text/javascript">
-$.post('getRest',{"s":s}).success(function(data){
-	$('#doc-res').val(data);
-	var swfMap = document.getElementById("Map");
-	swfMap.getData(data);
+$(document).ready(
+function(){
+$.post('getRestaurant',{"location":"北京"}).success(function(data){
+	alert("aaa");
+	alert(data);
+	alert("aaa");
 	}).error(function(data){
 	alert("系统出错");
-}); 
+});
+}
+);
 </script>
 </head>
 <body>

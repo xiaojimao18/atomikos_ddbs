@@ -5,7 +5,14 @@ public class Restaurant {
 	String RestaurantName;
 	String RestaurantIntro;
 	String RestaurantImg;
+	String RestaurantLocation;
 	
+	public String getRestaurantLocation() {
+		return RestaurantLocation;
+	}
+	public void setRestaurantLocation(String restaurantLocation) {
+		RestaurantLocation = restaurantLocation;
+	}
 	public String getRestaurantId() {
 		return RestaurantId;
 	}
