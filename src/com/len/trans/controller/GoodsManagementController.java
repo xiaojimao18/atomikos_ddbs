@@ -31,6 +31,7 @@ public class GoodsManagementController {
 	public String goodsManagent(){
 		return "/goods/goodsManagement";
 	}
+	
 	@RequestMapping(value="getGoodsList/all")
 	public void getGoodsList(HttpServletResponse response) throws Exception{
 		
@@ -43,6 +44,7 @@ public class GoodsManagementController {
 		//response.setContentType("application/json");
 		response.getWriter().print(jsonString);
 	}
+	
 	@RequestMapping(value="editPrice")
 	public void editPrice(HttpServletResponse response, @RequestParam int goodsId, @RequestParam float price) throws IOException{
 		boolean flag =false;

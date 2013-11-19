@@ -70,7 +70,6 @@ public class UserController {
 			session.setAttribute("userName", null);
 			return "error";
 		}
-	
 	}
 	@RequestMapping(value="/UserLogout")
 	public void UserLogout(HttpServletRequest request, HttpServletResponse response){

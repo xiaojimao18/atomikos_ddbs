@@ -28,6 +28,7 @@ public class UserServiceImpl implements UserService{
 	public boolean checkUser(String userName, String userPwd) {
 		List<User> userList = userDao.getUserList();
 		for (User user : userList) {
+			System.out.println(user.getUserId());
 			if (user.getUserId().equalsIgnoreCase(userName)) {
 				if (user.getUserPwd().equalsIgnoreCase(userPwd)) {
 					return true;
