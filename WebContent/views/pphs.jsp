@@ -127,36 +127,7 @@
 	<div class="container">
     	<div class="container">
     	<ul class="thumbnails" id="rstList">
-        	<li class="span3">
-            	<div class="thumbnail">
-                	<img data-src="holder.js/300x200" src="assets/img/demo.jpg">
-                    <h2>水果店</h2>
-                </div>
-            </li>
-            <li class="span3">
-            	<div class="thumbnail">
-                	<img data-src="holder.js/300x200" src="assets/img/demo.jpg">
-                    <h2>水果店</h2>
-                </div>
-            </li>
-            <li class="span3">
-            	<div class="thumbnail">
-                	<img data-src="holder.js/300x200" src="assets/img/demo.jpg">
-                    <h2>水果店</h2>
-                </div>
-            </li>
-            <li class="span3">
-            	<div class="thumbnail">
-                	<img data-src="holder.js/300x200" src="assets/img/demo.jpg">
-                    <h2>水果店</h2>
-                </div>
-            </li>
-            <li class="span3">
-            	<div class="thumbnail">
-                	<img data-src="holder.js/300x200" src="assets/img/demo.jpg">
-                    <h2>水果店</h2>
-                </div>
-            </li>
+    		
         </ul>
     </div>
     </div>
@@ -247,31 +218,27 @@
 <script src="assets/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-
 $(document).ready(
-	function(){
-		$.post('getRestaurant',{"location":"北京"}).success(
-			function(data){
-				alert(data);
-				var $rstList = $("#rstList");  
-				var strHtml = ""; 
-				$rstList.empty();//清空内容  
-				$.each(data,function(infoIndex,info){  
-				      strHtml += "姓名："+info["restaurantId"]+"<br>";  
-				      strHtml += "性别："+info["restaurantImg"]+"<br>";  
-				      strHtml += "邮箱："+info["email"]+"<br>";  
-				      strHtml += "<hr>";
-				    });
-				$rstList.html(strHtml);//显示处理后的数据     
-				});
-				
+		function(){
+		$.post('getRestaurant',{"location":"北京"}).success(function(data){
+			var obj = eval ("(" + data + ")");
+			var i = 0;
+			var strHtml = "";
+			while(i < obj.total){
+				strHtml += '<li class="span3"><div class="thumbnail"><img width="300" height="200" data-src="holder.js/300x200" src="';
+				strHtml += obj.rows[i].restaurantImg;
+				strHtml += '"><h2>';
+				strHtml += obj.rows[i].restaurantName;
+				strHtml += '</h2></div></li>';
+				i ++;
+			}
+			var $rstList = $("#rstList"); 
+			$rstList.html(strHtml);
 			}).error(function(data){
-				alert("系统出错");
+			alert("系统出错");
 		});
-	}
-);
-
- 
+		}
+		);
 </script>
 
 </body>

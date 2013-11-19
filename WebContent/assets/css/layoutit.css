@@ -115,6 +115,8 @@ row-fluid{
 	padding-top: 5px;
 }
 
+.thumbnail img{width:300px; height:200px;}
+
 /* ORDER */
 .orderTitle h2{
 	letter-spacing:6px;

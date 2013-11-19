@@ -10,9 +10,19 @@
 $(document).ready(
 function(){
 $.post('getRestaurant',{"location":"北京"}).success(function(data){
-	alert("aaa");
-	alert(data);
-	alert("aaa");
+	var obj = eval ("(" + data + ")");
+	var i = 0;
+	var strHtml = "";
+	while(i < obj.total){
+		strHtml += '<li class="span3"><div class="thumbnail"><img data-src="holder.js/300x200" src="';
+		strHtml += obj.rows[i].restaurantImg;
+		strHtml += '"><h2>';
+		strHtml += obj.rows[i].restaurantName;
+		strHtml += '</h2></div></li>';
+		i ++;
+	}
+
+	alert(strHtml);
 	}).error(function(data){
 	alert("系统出错");
 });
