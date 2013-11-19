@@ -6,6 +6,14 @@
 		flag = false;
 	else
 		flag = true;
+	
+	
+	//Location
+	String location = "";
+	if(session.getAttribute("location") == null)
+		location = "北京";
+	else
+		location = session.getAttribute("location").toString();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,13 +43,42 @@
 
                 <div class="nav-collapse collapse">
                   <ul class="nav" role="navigation">
+                  <%
+                  	if(location == "北京"){
+                  %>
+                  
                     <li class="dropdown cityChoice">
                       <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">北京 <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="http://google.com">上海</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">广州</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">香港</a></li>
                       </ul>
                     </li>
+                    <%
+                  	}else if(location == "上海"){
+                  	%>
+                  	<li class="dropdown cityChoice">
+                      <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">上海 <b class="caret"></b></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://google.com">北京</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">香港</a></li>
+                      </ul>
+                    </li>
+                  	<%	
+                  	}else if(location == "香港"){
+                    %>
+                    <li class="dropdown cityChoice">
+                      <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">香港 <b class="caret"></b></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://google.com">北京</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">上海</a></li>
+                      </ul>
+                    </li>
+                    <%
+                  	}
+                    %>
+                    
+                    
                   </ul>
                 </div>
 
@@ -220,7 +257,8 @@
 <script type="text/javascript">
 $(document).ready(
 		function(){
-		$.post('getRestaurant',{"location":"北京"}).success(function(data){
+		$.post('getRestaurant',{"location":"上海"}).success(function(data){
+			console.log(data);
 			var obj = eval ("(" + data + ")");
 			var i = 0;
 			var strHtml = "";
