@@ -13,32 +13,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.len.trans.config.DataGrid;
 import com.len.trans.config.JsonTransformer;
-import com.len.trans.pojo.Restaurant;
-import com.len.trans.service.RestaurantService;
+import com.len.trans.pojo.Food;
+import com.len.trans.service.FoodService;
 
 @Controller
-public class RestaurantController {
-
-	@Autowired
-	@Qualifier("restaurantService")
-	private RestaurantService restService;
-
+public class FoodController {
 	@Autowired
 	@Qualifier("jsonTransformer")
 	private JsonTransformer jsonTransformer;
 	
-	@RequestMapping(value="getRestaurant")
-	public void getRestaurantList(@RequestParam String location, HttpServletResponse response) {
-		List<Restaurant> restList = restService.getRestaurantList(location);
-		DataGrid dataGrid = new DataGrid();
-		dataGrid.setRows(restList);
-		String jsonString = jsonTransformer.getJsonForm(dataGrid);
-		response.setCharacterEncoding("UTF-8");
+	@Autowired
+	@Qualifier("foodService")
+	private FoodService foodService;
+	
+	@RequestMapping(value="getFood")
+	public void getFoodList(@RequestParam String restaurantId,
+							@RequestParam String location,
+							HttpServletResponse response) {
 		try {
+			List<Food> foodList = foodService.getFoodList(restaurantId, location);
+			
+			DataGrid dataGrid = new DataGrid();
+			dataGrid.setRows(foodList);
+			String jsonString = jsonTransformer.getJsonForm(dataGrid);
+			response.setCharacterEncoding("UTF-8");
+		
 			response.getWriter().print(jsonString);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 }
