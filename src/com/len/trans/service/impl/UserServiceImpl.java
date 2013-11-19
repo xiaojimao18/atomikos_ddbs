@@ -1,5 +1,7 @@
 package com.len.trans.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -18,8 +20,22 @@ public class UserServiceImpl implements UserService{
 	private UserDao userDao;
 	
 	@Transactional(propagation=Propagation.REQUIRED,rollbackFor=Throwable.class)
-	public void add(User u) throws Exception{
-		userDao.add(u);
-//		throw new Exception("³ö´íÁË£¡£¡£¡");
+	public void addUser(User u) throws Exception{
+		userDao.addUser(u);
+	}
+
+	@Override
+	public boolean checkUser(String userName, String userPwd) {
+		List<User> userList = userDao.getUserList();
+		for (User user : userList) {
+			if (user.getUserId().equalsIgnoreCase(userName)) {
+				if (user.getUserPwd().equalsIgnoreCase(userPwd)) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+		return false;
 	}
 }

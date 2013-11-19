@@ -87,7 +87,7 @@ public class DDBSDaoUtil {
 //					if(fieldIndex == -1 ){
 //						throw new  Exception("出现异常： 没有找到表中的列 : "+shardingField+"，来自 表： " + tableName);
 //					}
-					if(value.equals(params[fieldIndex])){
+					if(fieldIndex != -1 && value.equals(params[fieldIndex])){
 						JdbcTemplate jdbcTemplate = new JdbcTemplate((DataSource)springUtil.getBean(ds_rule.getDataSourceName()));
 						jdbcTemplateList.add(jdbcTemplate);//执行Sql的JdbcTempalte列表，以为可能涉及到更新到多个数据源，所以JdbcTempalte有多个
 					}
@@ -112,12 +112,12 @@ public class DDBSDaoUtil {
 				String value = ds_rule.getRuleValue();
 				String shardingField = getShardingField(tableName);
 
-				if(rule != null && rule.equalsIgnoreCase("EQUALS") && fields != null && params !=null){//暂时只考虑EQUALS关系，所以如果配置了其他关系会自动忽略
+				if(rule != null && rule.equalsIgnoreCase("EQUALS") && fields != null && params != null){//暂时只考虑EQUALS关系，所以如果配置了其他关系会自动忽略
 					int fieldIndex = getFieldIndex(fields, shardingField);
 //					if(fieldIndex == -1 ){
 //						throw new  Exception("出现异常： 没有找到表中的列 : "+shardingField+"，来自表： " + tableName);
 //					}
-					if(value.equals(params[fieldIndex])){
+					if(fieldIndex != -1 && value.equals(params[fieldIndex])){
 						JdbcTemplate jdbcTemplate = new JdbcTemplate((DataSource)springUtil.getBean(ds_rule.getDataSourceName()));
 						jdbcTemplateList.add(jdbcTemplate);//执行Sql的JdbcTempalte
 					}

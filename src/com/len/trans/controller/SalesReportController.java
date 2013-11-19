@@ -26,10 +26,12 @@ public class SalesReportController {
 	@Autowired
 	@Qualifier("jsonTransformer")
 	private JsonTransformer jsonTransformer;
+	
 	@RequestMapping(value = "/salesReport")
 	public String saleReport(){
 		return "/report/salesReport";
 	}
+	
 	@RequestMapping(value = "/salesReport/all")
 	public void getSalesReport(HttpServletResponse response, @RequestParam(defaultValue = "", required = false) String location) throws IOException{
 		List<Sale> list = salesReportService.getSalesReport(location);
