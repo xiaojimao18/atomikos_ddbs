@@ -10,7 +10,7 @@ import com.len.trans.dao.FoodDao;
 import com.len.trans.pojo.Food;
 import com.len.trans.service.FoodService;
 
-@Service("foodSerivce")
+@Service("foodService")
 public class FoodSerivceImpl implements FoodService {
 	@Autowired
 	@Qualifier("foodDao")
