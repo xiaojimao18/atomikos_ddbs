@@ -257,7 +257,7 @@
 <script type="text/javascript">
 $(document).ready(
 		function(){
-		$.post('getRestaurant',{"location":"上海"}).success(function(data){
+		$.post('getRestaurant',{"location":"北京"}).success(function(data){
 			console.log(data);
 			var obj = eval ("(" + data + ")");
 			var i = 0;
