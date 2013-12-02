@@ -20,17 +20,30 @@ public class UserDaoImpl implements UserDao{
 	private DDBSDaoUtil ddbsDaoUtil;
 
 	@Override
-	public List<User> getUserList() {
+	public List<User> getUserList(String location) {
 		List<User> userList = new ArrayList<User>();
 		String tableName = "user";
 		
-		List<JdbcTemplate> jdbcTemplateList = ddbsDaoUtil.getQueryJdbcTemplateList(tableName, null, null);
+		String[] field = {"Location"};
+		Object[] params = {location};
+		List<JdbcTemplate> jdbcTemplateList = ddbsDaoUtil.getQueryJdbcTemplateList(tableName, field, params);
 		
 		String sql = "select * from " + tableName;
 		for(JdbcTemplate j :jdbcTemplateList){
 			userList.addAll(j.query(sql, new UserWrapper()));
 			if(!userList.isEmpty()) {
 				break;
+			}
+		}
+		
+		// 如果在用户的location所在的数据库中没有找到用户信息，那么就访问所有的数据库，看是否有改用户的信息
+		if (userList.isEmpty()) {
+			jdbcTemplateList = ddbsDaoUtil.getQueryJdbcTemplateList(tableName, null, null);
+			for(JdbcTemplate j :jdbcTemplateList){
+				userList.addAll(j.query(sql, new UserWrapper()));
+				if(!userList.isEmpty()) {
+					break;
+				}
 			}
 		}
 		

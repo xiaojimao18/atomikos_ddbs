@@ -27,7 +27,7 @@ public class FoodDaoImpl implements FoodDao {
 		
 		List<JdbcTemplate> jdbcTemplateList = ddbsDaoUtil.getQueryJdbcTemplateList(tableName, fields, params);
 		
-		String sql = "select * from " + tableName + " where restaurantId = " + restaurantId;
+		String sql = "select * from " + tableName + " where RId = " + restaurantId;
 		for(JdbcTemplate j : jdbcTemplateList){
 			foodList.addAll(j.query(sql, new FoodWrapper()));
 			if(!foodList.isEmpty()) {
