@@ -3,7 +3,7 @@
     pageEncoding="utf-8"%>
 <%
 	boolean flag = false;
-	String userName;
+	String userName = "";
 	if(session.getAttribute("userName") == null){
 		flag = false;
 	//	response.sendRedirect("/");
