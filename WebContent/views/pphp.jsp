@@ -182,9 +182,9 @@ $(document).ready(
 			var strHtml = '<table class="table table-hover"><tr><th>餐厅</th><th>食品</th><th>订购数量</th><th>总价</th><th>送餐地址</th><th>订餐时间</th><th>订单状态</th></tr>';
 			while(i < obj.total){
 				strHtml += "<tr><td>";
-				strHtml += obj.rows[i].restaurantId;
+				strHtml += obj.rows[i].restaurantName;
 				strHtml += "</td><td>";
-				strHtml += obj.rows[i].foodId;
+				strHtml += obj.rows[i].foodName;
 				strHtml += "</td><td>";
 				strHtml += obj.rows[i].number;
 				strHtml += "</td><td>";
