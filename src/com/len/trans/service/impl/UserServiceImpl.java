@@ -25,8 +25,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public boolean checkUser(String userName, String userPwd) {
-		List<User> userList = userDao.getUserList();
+	public boolean checkUser(String userName, String userPwd, String location) {
+		List<User> userList = userDao.getUserList(location);
 		for (User user : userList) {
 			System.out.println(user.getUserId());
 			if (user.getUserId().equalsIgnoreCase(userName)) {

@@ -57,11 +57,15 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/UserLogin",method=RequestMethod.POST)
-	public String UserLogin(HttpServletRequest request, HttpServletResponse response, @RequestParam String userName, @RequestParam String userPwd){
-		HttpSession session = request.getSession(true);
+	public String UserLogin(HttpServletRequest request, 
+							HttpServletResponse response, 
+							@RequestParam String userName, 
+							@RequestParam String userPwd,
+							@RequestParam String location){
+		HttpSession session = request.getSession();
 		//判断是否存在用户，且密码正确
 		System.out.println(userName + "," + userPwd);
-		boolean flag = userService.checkUser(userName, userPwd);
+		boolean flag = userService.checkUser(userName, userPwd, location);
 		System.out.println(flag);
 		if(flag == true){
 			session.setAttribute("userName", userName);
