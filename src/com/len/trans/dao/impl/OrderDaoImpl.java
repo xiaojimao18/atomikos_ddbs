@@ -30,9 +30,6 @@ public class OrderDaoImpl implements OrderDao {
 					+ tableName + " o, food f, restaurant r where o.UId = '" + userId + "' and o.RId = r.RId and o.FId = f.FId";
 		for(JdbcTemplate j : jdbcTemplateList){
 			orderList.addAll(j.query(sql, new OrderWrapper()));
-			if(!orderList.isEmpty()) {
-				break;
-			}
 		}
 		
 		return orderList;

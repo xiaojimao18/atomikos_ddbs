@@ -35,18 +35,21 @@ public class UserDaoImpl implements UserDao{
 				break;
 			}
 		}
+
+		return userList;
+	}
+	
+	@Override
+	public List<User> getUserList() {
+		List<User> userList = new ArrayList<User>();
+		String tableName = "user";
 		
-		// 如果在用户的location所在的数据库中没有找到用户信息，那么就访问所有的数据库，看是否有改用户的信息
-		if (userList.isEmpty()) {
-			jdbcTemplateList = ddbsDaoUtil.getQueryJdbcTemplateList(tableName, null, null);
-			for(JdbcTemplate j :jdbcTemplateList){
-				userList.addAll(j.query(sql, new UserWrapper()));
-				if(!userList.isEmpty()) {
-					break;
-				}
-			}
+		String sql = "select * from " + tableName;
+		List<JdbcTemplate> jdbcTemplateList = ddbsDaoUtil.getQueryJdbcTemplateList(tableName, null, null);
+		for(JdbcTemplate j :jdbcTemplateList){
+			userList.addAll(j.query(sql, new UserWrapper()));
 		}
-		
+
 		return userList;
 	}
 	

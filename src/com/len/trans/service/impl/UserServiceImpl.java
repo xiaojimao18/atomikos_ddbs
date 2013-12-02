@@ -37,6 +37,19 @@ public class UserServiceImpl implements UserService{
 				}
 			}
 		}
+		
+		userList = userDao.getUserList();
+		for (User user : userList) {
+			System.out.println(user.getUserId());
+			if (user.getUserId().equalsIgnoreCase(userName)) {
+				if (user.getUserPwd().equalsIgnoreCase(userPwd)) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+		
 		return false;
 	}
 }
