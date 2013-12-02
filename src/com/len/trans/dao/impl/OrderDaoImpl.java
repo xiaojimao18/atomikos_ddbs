@@ -26,7 +26,8 @@ public class OrderDaoImpl implements OrderDao {
 		String tableName  = "orders";
 		List<JdbcTemplate> jdbcTemplateList = ddbsDaoUtil.getQueryJdbcTemplateList(tableName, null, null);
 
-		String sql = "select * " + tableName + " where UId = '" + userId + "'";
+		String sql = "select OId, o.UId, o.FId, f.FName, o.RId, r.RName, Number, Price, o.Location, Time, State from "
+					+ tableName + " o, food f, restaurant r where o.UId = '" + userId + "' and o.RId = r.RId, and o.FId = f.FId";
 		for(JdbcTemplate j : jdbcTemplateList){
 			orderList.addAll(j.query(sql, new OrderWrapper()));
 			if(!orderList.isEmpty()) {

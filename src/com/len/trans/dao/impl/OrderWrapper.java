@@ -16,7 +16,9 @@ public class OrderWrapper implements RowMapper<Order> {
 		order.setOrderId(rs.getString("OId"));
 		order.setUserId(rs.getString("UId"));
 		order.setFoodId(rs.getString("FId"));
+		order.setFoodName(rs.getString("FName"));
 		order.setRestaurantId(rs.getString("RId"));
+		order.setRestaurantName(rs.getString("RName"));
 		order.setNumber(new Integer(rs.getInt("Number")));
 		order.setPrice(rs.getString("Price"));
 		order.setLocation(rs.getString("Location"));

@@ -6,7 +6,9 @@ public class Order {
 	String orderId;
 	String userId;
 	String foodId;
+	String foodName;
 	String restaurantId;
+	String restaurantName;
 	int number;
 	String price;
 	String location;
@@ -27,6 +29,18 @@ public class Order {
 	}
 	public String getFoodId() {
 		return foodId;
+	}
+	public String getFoodName() {
+		return foodName;
+	}
+	public void setFoodName(String foodName) {
+		this.foodName = foodName;
+	}
+	public String getRestaurantName() {
+		return restaurantName;
+	}
+	public void setRestaurantName(String restaurantName) {
+		this.restaurantName = restaurantName;
 	}
 	public void setFoodId(String foodId) {
 		this.foodId = foodId;
