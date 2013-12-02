@@ -129,8 +129,22 @@
 					<div class="item active">
 						<img alt="" src="assets/img/1.jpg" />
 						<div class="carousel-caption">
-							<h4>棒球</h4>
-							<p>棒球运动是一种以棒打球为主要特点，集体性、对抗性很强的球类运动项目，在美国、日本尤为盛行。</p>
+							<h4>赫赫</h4>
+							<p>终于完了，这也太赞了~</p>
+						</div>
+					</div>
+					<div class="item">
+						<img alt="" src="assets/img/2.jpg" />
+						<div class="carousel-caption">
+							<h4>吼吼</h4>
+							<p>鹏鹏好Q对不对，娇娇好Sex有木有！</p>
+						</div>
+					</div>
+					<div class="item">
+						<img alt="" src="assets/img/3.jpg" />
+						<div class="carousel-caption">
+							<h4>嘿嘿</h4>
+							<p>就这样吧...</p>
 						</div>
 					</div>
 				</div>
@@ -159,66 +173,7 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div id="logInModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="logInModalLabel" aria-hidden="true">
-	<div class="modal-header">
-    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    	<h3 id="logInModalLabel">LOG IN</h3>
-	</div>
-	<form class="form-horizontal loginDialog" action="/User/Signin/" method="post" acceptcharset="UTF-8">
-		<div class="modal-body">
-			<div class="control-group">
-    			<label class="control-label" for="inputEmail">Email</label>
-    			<div class="controls">
-					<input type="text" id="inputEmail" placeholder="Email">
-				</div>
-			</div>
-  			<div class="control-group">
-    			<label class="control-label" for="inputPassword">Password</label>
-    			<div class="controls">
-      				<input type="password" id="inputPassword" placeholder="Password">
-    			</div>
-			</div>
-	</div>
-		<div class="modal-footer">
-    	<button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Log In</button>
-    	<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-	</div>
-	</form>
-</div>
 
-<div id="signUpModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
-	<div class="modal-header">
-    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    	<h3 id="signUpModalLabel">SIGN UP</h3>
-	</div>
-    <form class="form-horizontal loginDialog" action="/User/Signin/" method="post" acceptcharset="UTF-8">
-		<div class="modal-body">
-			<div class="control-group">
-    			<label class="control-label" for="inputEmail">Email</label>
-    			<div class="controls">
-					<input type="text" id="inputEmail" placeholder="Email">
-				</div>
-			</div>
-  			<div class="control-group">
-    			<label class="control-label" for="inputPassword">Password</label>
-    			<div class="controls">
-      				<input type="password" id="inputPassword" placeholder="Password">
-    			</div>
-			</div>
-            <div class="control-group">
-    			<label class="control-label" for="inputPassword">Confirm</label>
-    			<div class="controls">
-      				<input type="password" id="inputPassword" placeholder="Confirm">
-    			</div>
-			</div>
-	</div>
-		<div class="modal-footer">
-    	<button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Sign Up</button>
-    	<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-	</div>
-	</form>
-</div>
 
 <!-- Modal -->
 <!-- Modal -->
