@@ -3,7 +3,7 @@
     pageEncoding="utf-8"%>
 <%
 	boolean flag = false;
-	String userName;
+	String userName = "";
 	if(session.getAttribute("userName") == null){
 		flag = false;
 	//	response.sendRedirect("/");
@@ -38,7 +38,7 @@
 
     <div class="row" id="row-logo">
     	<div class="span12 navbar bufferBottom">
-    		<img src="assets/img/logo.png" class="imgLogo" />
+    		<a href="index.jsp"><img src="assets/img/logo.png" class="imgLogo" /></a>
             
             
  <div class="nav-collapse collapse">

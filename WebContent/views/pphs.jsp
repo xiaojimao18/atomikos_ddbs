@@ -39,7 +39,7 @@
 
     <div class="row" id="row-logo">
     	<div class="span12 navbar bufferBottom">
-    		<img src="assets/img/logo.png" class="imgLogo" />
+    		<a href="index.jsp"><img src="assets/img/logo.png" class="imgLogo" /></a>
             
             
 
@@ -217,29 +217,23 @@
     	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     	<h3 id="signUpModalLabel">SIGN UP</h3>
 	</div>
-    <form class="form-horizontal loginDialog" action="/User/Signin/" method="post" acceptcharset="UTF-8">
+    <form class="form-horizontal loginDialog" action="userSignUp" method="post" acceptcharset="UTF-8">
 		<div class="modal-body">
 			<div class="control-group">
     			<label class="control-label" for="inputEmail">Email</label>
     			<div class="controls">
-					<input type="text" id="inputEmail" placeholder="Email">
+					<input type="text" id="userId" placeholder="Email" name="userId">
 				</div>
 			</div>
   			<div class="control-group">
     			<label class="control-label" for="inputPassword">Password</label>
     			<div class="controls">
-      				<input type="password" id="inputPassword" placeholder="Password">
+      				<input type="password" id="userPwd" placeholder="Password" name="userPwd">
     			</div>
 			</div>
-            <div class="control-group">
-    			<label class="control-label" for="inputPassword">Confirm</label>
-    			<div class="controls">
-      				<input type="password" id="inputPassword" placeholder="Confirm">
-    			</div>
-			</div>
-	</div>
+         </div>
 		<div class="modal-footer">
-    	<button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Sign Up</button>
+    	<input type="submit" class="btn btn-info" value="Sign Up">
     	<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 	</div>
 	</form>

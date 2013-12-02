@@ -56,15 +56,33 @@ public class UserController {
 		return new ModelAndView("/success","user",user);
 	}
 	
+	@RequestMapping(value="/userSignUp", method=RequestMethod.POST)
+	public String UserSignUp(@RequestParam String userId, @RequestParam String userPwd, HttpServletResponse response, HttpServletRequest request){
+		HttpSession session = request.getSession(true);
+		String location = session.getAttribute("location").toString();
+		System.out.println("Sign Up:" + userId + "," + userPwd + "," + location);
+		User myUser = new User();
+		myUser.setUserId(userId);
+		myUser.setUserPwd(userPwd);
+		myUser.setLocation(location);
+		try {
+			userService.addUser(myUser);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "pphs";
+	}
+	
 	@RequestMapping(value="/UserLogin",method=RequestMethod.POST)
 	public String UserLogin(HttpServletRequest request, 
 							HttpServletResponse response, 
 							@RequestParam String userName, 
-							@RequestParam String userPwd,
-							@RequestParam String location){
-		HttpSession session = request.getSession();
+							@RequestParam String userPwd){
+		HttpSession session = request.getSession(true);
 		//判断是否存在用户，且密码正确
-		System.out.println(userName + "," + userPwd);
+		String location = session.getAttribute("location").toString();
+		System.out.println("Login:" + userName + "," + userPwd);
 		boolean flag = userService.checkUser(userName, userPwd, location);
 		System.out.println(flag);
 		if(flag == true){
