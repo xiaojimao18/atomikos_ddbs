@@ -44,9 +44,9 @@
  <div class="nav-collapse collapse">
                   <ul class="nav" role="navigation">
                   <%
-                  	System.out.println(location);
+                  	//System.out.println(location);
                   	if(location.equals("北京")){
-                  		System.out.println("GG");
+                  		//System.out.println("GG");
                   %>
                   
                     <li class="dropdown cityChoice">
@@ -221,6 +221,61 @@
 </div>
 
 <!-- Modal -->
+<!-- Modal -->
+<div id="logInModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="logInModalLabel" aria-hidden="true">
+	<div class="modal-header">
+    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    	<h3 id="logInModalLabel">LOG IN</h3>
+	</div>
+	<form class="form-horizontal loginDialog" action="UserLogin" method="post" acceptcharset="UTF-8">
+		<div class="modal-body">
+			<div class="control-group">
+    			<label class="control-label" for="inputEmail">Email</label>
+    			<div class="controls">
+					<input type="text" id="inputEmail" placeholder="Email" name="userName">
+				</div>
+			</div>
+			<input type="hidden" value="<%=location %>" name="location" />
+  			<div class="control-group">
+    			<label class="control-label" for="inputPassword">Password</label>
+    			<div class="controls">
+      				<input type="password" id="inputPassword" placeholder="Password" name="userPwd">
+    			</div>
+			</div>
+	</div>
+		<div class="modal-footer">
+    	<input class="btn btn-info" value="Login" type="submit" />
+    	<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+	</div>
+	</form>
+</div>
+
+<div id="signUpModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+	<div class="modal-header">
+    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    	<h3 id="signUpModalLabel">SIGN UP</h3>
+	</div>
+    <form class="form-horizontal loginDialog" action="userSignUp" method="post" acceptcharset="UTF-8">
+		<div class="modal-body">
+			<div class="control-group">
+    			<label class="control-label" for="inputEmail">Email</label>
+    			<div class="controls">
+					<input type="text" id="userId" placeholder="Email" name="userId">
+				</div>
+			</div>
+  			<div class="control-group">
+    			<label class="control-label" for="inputPassword">Password</label>
+    			<div class="controls">
+      				<input type="password" id="userPwd" placeholder="Password" name="userPwd">
+    			</div>
+			</div>
+         </div>
+		<div class="modal-footer">
+    	<input type="submit" class="btn btn-info" value="Sign Up">
+    	<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+	</div>
+	</form>
+</div>
 <div id="OrderModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="OrderModalLabel" aria-hidden="true">
 	<div class="modal-header">
     	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

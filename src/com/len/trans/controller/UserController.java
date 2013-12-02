@@ -51,7 +51,7 @@ public class UserController {
 	 */
 	@RequestMapping(method=RequestMethod.POST)
 	public ModelAndView create(HttpServletRequest request,HttpServletResponse response,User user)throws Exception{
-		System.out.println("add***************");
+		//System.out.println("add***************");
 		userService.addUser(user);
 		return new ModelAndView("/success","user",user);
 	}

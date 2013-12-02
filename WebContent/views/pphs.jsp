@@ -15,7 +15,7 @@
 		location = "北京";
 	else
 		location = session.getAttribute("location").toString();
-	System.out.println(location);
+	//System.out.println(location);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +46,9 @@
                 <div class="nav-collapse collapse">
                   <ul class="nav" role="navigation">
                   <%
-                  	System.out.println(location);
+                  	//System.out.println(location);
                   	if(location.equals("北京")){
-                  		System.out.println("GG");
+                  		//System.out.println("GG");
                   %>
                   
                     <li class="dropdown cityChoice">

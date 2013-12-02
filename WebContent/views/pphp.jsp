@@ -13,7 +13,7 @@ if(session.getAttribute("userName") == null){
 else{
 	flag = true;
 	userName = session.getAttribute("userName").toString();
-	System.out.println(userName);
+	//System.out.println(userName);
 }
 %>
 <!DOCTYPE html>
