@@ -185,9 +185,9 @@
 	<form class="form-horizontal loginDialog" action="UserLogin" method="post" acceptcharset="UTF-8">
 		<div class="modal-body">
 			<div class="control-group">
-    			<label class="control-label" for="inputEmail">Email</label>
+    			<label class="control-label" for="inputEmail">UserName</label>
     			<div class="controls">
-					<input type="text" id="inputEmail" placeholder="Email" name="userName">
+					<input type="text" id="inputEmail" placeholder="UserName" name="userName">
 				</div>
 			</div>
 			<input type="hidden" value="<%=location %>" name="location" />
@@ -213,9 +213,9 @@
     <form class="form-horizontal loginDialog" action="userSignUp" method="post" acceptcharset="UTF-8">
 		<div class="modal-body">
 			<div class="control-group">
-    			<label class="control-label" for="inputEmail">Email</label>
+    			<label class="control-label" for="inputEmail">UserName</label>
     			<div class="controls">
-					<input type="text" id="userId" placeholder="Email" name="userId">
+					<input type="text" id="userId" placeholder="UserName" name="userId">
 				</div>
 			</div>
   			<div class="control-group">
