@@ -26,7 +26,7 @@ public class OrderDaoImpl implements OrderDao {
 		String tableName  = "orders";
 		List<JdbcTemplate> jdbcTemplateList = ddbsDaoUtil.getQueryJdbcTemplateList(tableName, null, null);
 
-		String sql = "select * " + tableName + " where UId = " + userId;
+		String sql = "select * from " + tableName + " where UId = '" + userId + "'";
 		for(JdbcTemplate j : jdbcTemplateList){
 			orderList.addAll(j.query(sql, new OrderWrapper()));
 			if(!orderList.isEmpty()) {

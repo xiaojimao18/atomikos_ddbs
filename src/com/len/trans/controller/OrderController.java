@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,7 +30,20 @@ public class OrderController {
 	@Qualifier("orderService")
 	private OrderService orderService;
 	
-	@RequestMapping(value="getOrders")
+	@RequestMapping(value="/toOrder")
+	public String toOrder(HttpServletResponse response, HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		if(session.getAttribute("userName") == null){
+			return "pphs";
+		}else if(session.getAttribute("userName").toString().equals("")){
+			return "pphs";
+		}else{
+			return "pphp";
+		}
+					
+	}
+	
+	@RequestMapping(value="/getOrders")
 	public void getOrderList(@RequestParam String userId, HttpServletResponse response) {
 		try {
 			List<Order> orderList = orderService.getOrderList(userId);
@@ -56,18 +71,23 @@ public class OrderController {
 		orderService.cancelOrder(order);
 	}
 	
-	@RequestMapping(value="addOrder")
-	public void addOrder(	@RequestParam String userId,
+	@RequestMapping(value="/addOrder")
+	public String addOrder(	@RequestParam String userId,
 							@RequestParam String foodId,
 							@RequestParam String restaurantId,
 							@RequestParam String price,
-							@RequestParam String location, 
+							 
 							@RequestParam String number,
-							@RequestParam String state,
-							HttpServletResponse response) {
+							
+							HttpServletResponse response,
+							HttpServletRequest request) {
+		String state = "Ô¤¶¨";
+		HttpSession session  = request.getSession(true); 
+		String location = session.getAttribute("location").toString();
+		System.out.println(userId + "," + foodId + "," + restaurantId + "," + price + "," + location + "," + number);
 		Order order = new Order();
 		
-		order.setOrderId(userId);
+		order.setUserId(userId);
 		order.setFoodId(foodId);
 		order.setRestaurantId(restaurantId);
 		order.setPrice(price);
@@ -79,5 +99,6 @@ public class OrderController {
 		order.setOrderId(UUID.randomUUID().toString());
 		
 		orderService.addOrder(order);
+		return "pphp";
 	}
 }

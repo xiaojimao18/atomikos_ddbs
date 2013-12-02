@@ -4,16 +4,18 @@
 	boolean flag = false;
 	if(session.getAttribute("userName") == null)
 		flag = false;
+	else if(session.getAttribute("userName").toString().equals(""))
+		flag = false;
 	else
 		flag = true;
-	
-	
+		
 	//Location
 	String location = "";
 	if(session.getAttribute("location") == null)
 		location = "北京";
 	else
 		location = session.getAttribute("location").toString();
+	System.out.println(location);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,34 +46,36 @@
                 <div class="nav-collapse collapse">
                   <ul class="nav" role="navigation">
                   <%
-                  	if(location == "北京"){
+                  	System.out.println(location);
+                  	if(location.equals("北京")){
+                  		System.out.println("GG");
                   %>
                   
                     <li class="dropdown cityChoice">
                       <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">北京 <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://google.com">上海</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">香港</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="locateSH">上海</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="locateXG">香港</a></li>
                       </ul>
                     </li>
                     <%
-                  	}else if(location == "上海"){
+                  	}else if(location.equals("上海")){
                   	%>
                   	<li class="dropdown cityChoice">
                       <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">上海 <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://google.com">北京</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">香港</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="locateBJ">北京</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="locateXG">香港</a></li>
                       </ul>
                     </li>
                   	<%	
-                  	}else if(location == "香港"){
+                  	}else{
                     %>
                     <li class="dropdown cityChoice">
                       <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">香港 <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://google.com">北京</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">上海</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="locateBJ">北京</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="locateSH">上海</a></li>
                       </ul>
                     </li>
                     <%
@@ -107,7 +111,7 @@
                     	<i class="icon-user"></i> &nbsp;<%=session.getAttribute("userName") %>
                     </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                    	<li role="presentation"><a role="menuitem" tabindex="-1" href="user/UserLogout">查看订单</a></li>
+                    	<li role="presentation"><a role="menuitem" tabindex="-1" href="toOrder">查看订单</a></li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="UserLogout">退出登录</a></li>
                 	</ul>
                 </div>
@@ -199,10 +203,9 @@
       				<input type="password" id="inputPassword" placeholder="Password" name="userPwd">
     			</div>
 			</div>
-			<button class="btn btn-info" data-dismiss="modal" aria-hidden="true" type="submit">Log In</button>
 	</div>
 		<div class="modal-footer">
-    	<button class="btn btn-info" data-dismiss="modal" aria-hidden="true" type="submit">Log In</button>
+    	<input class="btn btn-info" value="Login" type="submit" />
     	<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 	</div>
 	</form>
@@ -242,30 +245,23 @@
 </div>
 
 
-	<form class="form-horizontal loginDialog" action="UserLogin" method="post" acceptcharset="UTF-8">
-		<input type="text" id="inputEmail" placeholder="Email" name="userName">
-		<input type="password" id="inputPassword" placeholder="Password" name="userPwd">
-	   	<button class="btn btn-info" data-dismiss="modal" aria-hidden="true" type="submit">Log In</button>
-    	<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-	</form>
-
-
-
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
 $(document).ready(
 		function(){
-		$.post('getRestaurant',{"location":"北京"}).success(function(data){
+		$.post('getRestaurant',{"location":"<%=location %>"}).success(function(data){
 			console.log(data);
 			var obj = eval ("(" + data + ")");
 			var i = 0;
 			var strHtml = "";
 			while(i < obj.total){
-				strHtml += '<li class="span3"><div class="thumbnail"><img width="300" height="200" data-src="holder.js/300x200" src="';
+				strHtml += '<li class="span3"><div class="thumbnail"><a href="getFoods?restaurantId=';
+				strHtml += obj.rows[i].restaurantId;
+				strHtml += '"><img width="300" height="200" data-src="holder.js/300x200" src="';
 				strHtml += obj.rows[i].restaurantImg;
-				strHtml += '"><h2>';
+				strHtml += '"></a><h2>';
 				strHtml += obj.rows[i].restaurantName;
 				strHtml += '</h2></div></li>';
 				i ++;
