@@ -197,6 +197,7 @@
 					<input type="text" id="inputEmail" placeholder="Email" name="userName">
 				</div>
 			</div>
+			<input type="hidden" value="<%=location %>" name="location" />
   			<div class="control-group">
     			<label class="control-label" for="inputPassword">Password</label>
     			<div class="controls">
