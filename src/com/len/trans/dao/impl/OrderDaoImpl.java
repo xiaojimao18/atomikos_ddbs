@@ -29,7 +29,12 @@ public class OrderDaoImpl implements OrderDao {
 		String sql = "select OId, o.UId, o.FId, f.FName, o.RId, r.RName, Number, o.Price, o.Location, Time, State from "
 					+ tableName + " o, food f, restaurant r where o.UId = '" + userId + "' and o.RId = r.RId and o.FId = f.FId";
 		for(JdbcTemplate j : jdbcTemplateList){
-			orderList.addAll(j.query(sql, new OrderWrapper()));
+			try{
+				orderList.addAll(j.query(sql, new OrderWrapper()));
+			}catch(Exception e){
+				System.out.println("catch exception!");
+				e.printStackTrace();
+			}
 		}
 		
 		return orderList;

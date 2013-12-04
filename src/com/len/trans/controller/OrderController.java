@@ -80,7 +80,7 @@ public class OrderController {
 							@RequestParam String number,
 							
 							HttpServletResponse response,
-							HttpServletRequest request) {
+							HttpServletRequest request) throws IOException {
 		String state = "预定";
 		HttpSession session  = request.getSession(true); 
 		String location = session.getAttribute("location").toString();
@@ -98,7 +98,12 @@ public class OrderController {
 		order.setDate(new Date());
 		order.setOrderId(UUID.randomUUID().toString());
 		
-		orderService.addOrder(order);
+		try{
+			orderService.addOrder(order);
+		}catch(Exception e){
+			e.printStackTrace();
+			response.sendError(404, "该地区服务暂时不可用，到店里去买吧~");
+		}
 		return "pphp";
 	}
 }
