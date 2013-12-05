@@ -40,16 +40,23 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Override
-	public List<User> getUserList() {
+	public List<User> getUserList() throws Exception {
 		List<User> userList = new ArrayList<User>();
 		String tableName = "user";
 		
 		String sql = "select * from " + tableName;
 		List<JdbcTemplate> jdbcTemplateList = ddbsDaoUtil.getQueryJdbcTemplateList(tableName, null, null);
+		boolean flag = false;
 		for(JdbcTemplate j :jdbcTemplateList){
-			userList.addAll(j.query(sql, new UserWrapper()));
+			try{
+				userList.addAll(j.query(sql, new UserWrapper()));
+			}catch(Exception e){
+				e.printStackTrace();
+				flag = true;
+			}
 		}
 
+		if (userList.isEmpty() && flag) throw new Exception("database down in getUserList.");
 		return userList;
 	}
 	

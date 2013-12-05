@@ -21,12 +21,16 @@ public class UserServiceImpl implements UserService{
 	
 	@Transactional(propagation=Propagation.REQUIRED,rollbackFor=Throwable.class)
 	public void addUser(User u) throws Exception{
+		if (checkUser(u.getUserId(), u.getUserPwd(), u.getLocation()) == true){
+			throw new Exception("User already exist!");
+		}
 		userDao.addUser(u);
 	}
 
 	@Override
-	public boolean checkUser(String userName, String userPwd, String location) {
-		List<User> userList = userDao.getUserList(location);
+	public boolean checkUser(String userName, String userPwd, String location) throws Exception {
+		List<User> userList;
+		userList = userDao.getUserList(location);
 		for (User user : userList) {
 			System.out.println(user.getUserId());
 			if (user.getUserId().equalsIgnoreCase(userName)) {

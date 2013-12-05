@@ -102,7 +102,7 @@ public class OrderController {
 			orderService.addOrder(order);
 		}catch(Exception e){
 			e.printStackTrace();
-			response.sendError(404, "该地区服务暂时不可用，到店里去买吧~");
+			response.sendError(404, "The service in this area is down. Get your shoes on and go for a big meal outside~");
 		}
 		return "pphp";
 	}
