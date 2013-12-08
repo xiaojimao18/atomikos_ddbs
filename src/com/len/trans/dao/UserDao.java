@@ -7,5 +7,5 @@ import com.len.trans.pojo.User;
 public interface UserDao {
 	public void addUser(User u) throws Exception;
 	public List<User> getUserList(String location);
-	List<User> getUserList();
+	List<User> getUserList() throws Exception;
 }

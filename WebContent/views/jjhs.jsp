@@ -130,14 +130,14 @@
 						<img alt="" src="assets/img/1.jpg" />
 						<div class="carousel-caption">
 							<h4>赫赫</h4>
-							<p>终于完了，这也太赞了~</p>
+							<p>这也太赞了~</p>
 						</div>
 					</div>
 					<div class="item">
 						<img alt="" src="assets/img/2.jpg" />
 						<div class="carousel-caption">
 							<h4>吼吼</h4>
-							<p>鹏鹏好Q对不对，娇娇好Sex有木有！</p>
+							<p>吃饭啦！</p>
 						</div>
 					</div>
 					<div class="item">

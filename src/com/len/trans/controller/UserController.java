@@ -83,13 +83,18 @@ public class UserController {
 		//判断是否存在用户，且密码正确
 		String location = session.getAttribute("location").toString();
 		System.out.println("Login:" + userName + "," + userPwd);
-		boolean flag = userService.checkUser(userName, userPwd, location);
-		System.out.println(flag);
-		if(flag == true){
-			session.setAttribute("userName", userName);
-			return "pphs";
-		}else{
-			session.setAttribute("userName", null);
+		try{
+			boolean flag = userService.checkUser(userName, userPwd, location);
+			System.out.println(flag);
+			if(flag == true){
+				session.setAttribute("userName", userName);
+				return "pphs";
+			}else{
+				session.setAttribute("userName", null);
+				return "error";
+			}
+		}catch(Exception e){
+			e.printStackTrace();
 			return "error";
 		}
 	}
